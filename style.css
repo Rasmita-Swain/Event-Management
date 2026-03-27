@@ -603,3 +603,190 @@ h1{
     width: 100%;
   }
 }
+
+/*events section*/
+
+
+.event-img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.cards h2{
+  font-size:  clamp(2rem , 4vw , 5rem);
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 1.25;
+}
+.book-now{
+  font-size: 1.25rem;
+}
+#sec04{
+  position: relative;
+  width: 100vw;
+  background-color: #0f0f0f;
+  color: #fff;
+  
+}
+.cards{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25svh;
+}
+.card-marquee{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+.marquee{
+  display: flex;
+}
+.marquee .paralal{
+  white-space: nowrap;
+  font-size: 10vw;
+  font-weight: 600;
+  margin-right: 30px; 
+}
+.card{
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 1.5em;
+}
+.card-wrap{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+.card-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 150px;
+  overflow: hidden;
+}
+.card-img img{
+  transform:scale(2) ;
+}
+.card-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+}
+.card-content .card-title{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  color: #fff;
+  font-family: "Ribeye", serif;
+  text-align: center;
+  
+}
+.card-content .card-book{
+  text-align: center;
+  transform: translateY(-40px);
+  opacity: 0;
+}
+.cssbuttons-io-button {
+  background: #b0e8ec;
+  color: black;
+  font-family: "Macondo Swash Caps", cursive;
+  font-size: 21px;
+  font-weight: 600;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 1.6em -0.6em #a7b7e3;
+  overflow: hidden;
+  position: relative;
+  width: 30rem;
+  height: 3em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+.cssbuttons-io-button .book-option{
+  text-decoration: none;
+  display: inline-flex;
+
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.4em;
+
+  bottom: 0.4em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+@media  (max-width:605px) {
+  .cssbuttons-io-button{
+    width: 10rem;
+  }
+}
+@media  (max-width:205px) {
+  .cssbuttons-io-button{
+    width: 5.3rem;
+    font-size: smaller;
+  }
+}
+.card:nth-child(2){
+ margin-top: 50vh;
+}
+.char{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.char span{
+  transform: translateX(100%);
+  display: inline-block;
+  will-change: transform;
+}
+@media (max-width:900px){
+  .card-title h2{
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+}
