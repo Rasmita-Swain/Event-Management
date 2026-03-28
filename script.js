@@ -288,3 +288,32 @@ cards.forEach((card, index) => {
 
  setupMarqueeAnimation();
 });
+
+//image scroll reveal
+ ScrollReveal({ 
+    reset: true ,
+    distance:'60px',
+    duration:2500,
+    delay:400
+});
+ScrollReveal().reveal('.gallery-header', { delay: 400,origin:'top' });
+const buttons = document.querySelectorAll(".filter-option li");
+const gbox = document.querySelectorAll(".gall-box");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.getAttribute("data-filter");
+
+    gbox.forEach(gbox => {
+      if (filter === "all") {
+        gbox.style.display = "block";
+      } else {
+        if (gbox.classList.contains(filter)) {
+          gbox.style.display = "block";
+        } else {
+          gbox.style.display = "none";
+        }
+      }
+    });
+  });
+});
