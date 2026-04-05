@@ -317,3 +317,163 @@ buttons.forEach(btn => {
     });
   });
 });
+
+//change color while scrolling
+
+const changeColor = () => {
+  const sections = document.querySelectorAll(".sections");
+
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+      document.body.style.background =
+        section.getAttribute("data-colors");
+    }
+  });
+};
+
+window.addEventListener("scroll", changeColor);
+
+
+//review section
+
+const openBtn = document.getElementById("openReviewBtn");
+const modal = document.getElementById("reviewModal");
+const closeBtn = document.getElementById("closeModal");
+
+const form = document.getElementById("reviewForm");
+const track = document.getElementById("reviewTrack");
+const stars = document.querySelectorAll(".stars span");
+
+let selectedStars = 0;
+
+// 🔓 Open Modal
+openBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+});
+
+// ❌ Close Modal
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+// ⭐ Star Selection
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedStars = star.dataset.value;
+
+    stars.forEach(s => s.classList.remove("active"));
+    for (let i = 0; i < selectedStars; i++) {
+      stars[i].classList.add("active");
+    }
+  });
+});
+
+// 📦 Load Reviews from localStorage
+function loadReviews() {
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+  let firstTen = reviews.slice(-10).reverse();
+  let duplicated = [...firstTen, ...firstTen];
+
+  track.innerHTML = duplicated.map(r => `
+  <div class="review-card">
+    
+    <div class="review-avatar" style="background:${getColor(r.name)}">
+      ${r.name.charAt(0).toUpperCase()}
+    </div>
+
+    <h3>${r.name}</h3>
+
+    <div class="stars">
+      ${"⭐".repeat(r.stars)}
+    </div>
+
+
+    <p class="review-text">
+      ${r.message}
+    </p>
+
+    
+  </div>
+
+
+
+`).join("");
+}
+function getColor(name) {
+  const colors = ["#c9a227", "#8a7d6b", "#c14356", "#6b8e23", "#4682b4"];
+  let index = name.charCodeAt(0) % colors.length;
+  return colors[index];
+}
+
+// 📤 Submit Review
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
+
+  if (selectedStars === 0) {
+    alert("Please select rating");
+    return;
+  }
+
+  let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+  reviews.push({
+    name,
+    stars: selectedStars,
+    message
+  });
+
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+
+  form.reset();
+  selectedStars = 0;
+  stars.forEach(s => s.classList.remove("active"));
+
+  loadReviews(); // refresh carousel
+});
+
+// 🚀 Initial Load
+loadReviews();
+
+
+//contact popup form
+
+/*const cform = document.querySelector(".contactForm");
+const popup = document.getElementById("popup");
+const closeBttn = document.getElementById("closeModal");
+
+cform.addEventListener("submit", function(e) {
+  e.preventDefault(); 
+  popup.classList.add("open");
+});
+
+closeBttn.addEventListener("click", () => {
+  console.log("ok");
+  popup.classList.remove("open");
+});*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const cform = document.querySelector(".contactForm");
+  const popup = document.getElementById("popup");
+  const closeBttn = document.getElementById("closeModdal");
+
+  console.log(closeBttn); // check if found
+
+  cform.addEventListener("submit", function (e) {
+    e.preventDefault();
+    popup.classList.add("open");
+    
+  });
+
+  closeBttn.addEventListener("click", function () {
+    popup.classList.remove("open");
+    cform.reset();
+  });
+
+});
