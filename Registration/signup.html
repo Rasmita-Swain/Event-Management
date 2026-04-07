@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Audiowide&family=Cinzel+Decorative:wght@400;700;900&family=Eagle+Lake&family=Lugrasimo&family=Macondo+Swash+Caps&family=Ribeye&display=swap" rel="stylesheet">
+    <title>sign-up</title>
+</head>
+<body>
+    <div class="login-container">
+        <!--login form-->
+       <div class="form-box login">
+          <form action="#">
+             <h1>Login</h1>
+             <div class="login-input-box">
+               <input type="text" placeholder="Username" >
+                <i class="fa-solid fa-user"></i>
+             </div>
+             <div class="login-input-box">
+               <input type="password" placeholder="Password" >
+                <i class="fa-solid fa-lock"></i>
+             </div>
+             <button type="submit" class="butn">Login</button>
+             <!--<p>OR login with Social platforms</p>
+             <div class="social-icons">
+             <a href="#"><i class="fa-brands fa-google"></i></a>
+             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+             </div>-->
+          </form>
+
+       </div>
+
+       <!--register form-->
+       <div class="form-box register">
+         <form action="#">
+             <h1>Registration</h1>
+             <div class="login-input-box">
+               <input type="text" placeholder="Username" >
+                <i class="fa-solid fa-user"></i>
+             </div>
+             <div class="login-input-box">
+               <input type="email" placeholder="email" >
+                <i class="fa-solid fa-envelope"></i>
+             </div>
+             <div class="login-input-box">
+               <input type="password" placeholder="Password" >
+                <i class="fa-solid fa-lock"></i>
+             </div>
+             <div class="login-input-box">
+               <select name="role" >
+                  <option value="">---Select Role--</option>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+               </select>
+             </div>
+             <button type="submit" class="butn">Register</button>
+             <!--<p>OR register with Social platforms</p>-->
+            <!-- <div class="social-icons">
+             <a href="#"><i class="fa-brands fa-google"></i></a>
+             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+             </div>-->
+          </form>
+      
+       </div>
+
+       <!--toggle box-->
+       <div class="toggle-box">
+         <!--left toggle-->
+        <div class="toggle-panel toggle-left">
+           <h1>Hello, Welcome!</h1>
+           <p>Don't have an account?</p>
+           <button class="butn register-btn">Register</button>
+        </div>
+
+        <!--right toggle-->
+        <div class="toggle-panel toggle-right">
+           <h1>Welcome Back!</h1>
+           <p>Already Have An Account ?</p>
+           <button class="butn login-btn">Login</button>
+        </div>
+
+       </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    <script src="login.js"></script>
+</body>
+</html>
