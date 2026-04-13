@@ -8,3 +8,7 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
     loginContainer.classList.remove('active');
 });
+
+/*function goBack() {
+  window.location.href = "../index.html"; // adjust path if needed
+}*/

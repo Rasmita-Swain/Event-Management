@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <link rel="stylesheet" href="book.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Audiowide&family=Cinzel+Decorative:wght@400;700;900&family=Eagle+Lake&family=Lugrasimo&family=Macondo+Swash+Caps&family=Ribeye&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <section class="budget-container">
+        <div class="book-container">
+            <div class="book-head">
+                <h1>Book Your Event</h1>
+            </div>
+
+            <div class="budget-form">
+                <!-- Event Selection -->
+              <form action="" class="book-box"></form>
+                <label>Select Event Type :-</label>
+                <select id="eventType">
+                    <option value="">-- Select Event --</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="seminar">Seminar</option>
+                    <option value="program">Cultural Program</option>
+                    <option value="Others">Others</option>
+                </select>
+
+                <!-- Dynamic Name Input -->
+                <div id="nameSection" style="display:none; margin-top: 3px;">
+                    <label id="nameLabel" class="nameLabel"></label>
+                    <input type="text" id="eventName" placeholder="">
+                </div>
+                <div class="guest-input">
+                    <label for="" class="nameGuest">Enter Number of Guests :-</label>
+                 <input type="number" id="guests" placeholder="Number of guests">
+                </div>
+                
+                <div class="services">
+
+    <div class="service">
+        <h3>Catering (per guest)</h3>
+        
+        <input type="number" id="qty-catering" placeholder="Guests" min="1"><br>
+        <button onclick="addToCart('Catering', 500, 'qty-catering')">Add</button>
+    </div>
+
+    <div class="service">
+        <h3>Decoration</h3>
+        
+        <input type="number" id="qty-decoration" placeholder="Qty" min="1"><br>
+        <button onclick="addToCart('Decoration', 3000, 'qty-decoration')">Add</button>
+    </div>
+
+    <div class="service">
+        <h3>DJ</h3>
+        
+        <input type="number" id="qty-dj" placeholder="Qty" min="1"><br>
+        <button onclick="addToCart('DJ', 4000, 'qty-dj')">Add</button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+    </section>
+
+    <script src="calc.js"></script>
+</body>
+
+</html>
