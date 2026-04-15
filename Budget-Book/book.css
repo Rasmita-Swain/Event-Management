@@ -10,6 +10,9 @@ body{
     width: 100%;
     padding: 2rem;
 }
+.budget-container button{
+    background: #ab6419;
+}
 .book-container{
     width: 100%;
     height: 100%;
@@ -23,6 +26,26 @@ body{
     padding: 10px;
     margin-top: 5px;
     font-family: "Ribeye", serif;
+}
+
+.backBtn{
+     position: absolute;
+  max-width: 100px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #fff;
+  border: 2px solid black;
+  background: #ffffff;
+  padding: 8px ;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  font-weight: 500;
+  z-index: 1000;
+}
+.backBtn:hover{
+    background: #333;
+    color: #fff;
 }
 .budget-form{
     padding: 2rem;
@@ -63,7 +86,6 @@ label{
     width: 100%;
     margin-top: 30px;
     display: flex;
-    justify-content: center;
     gap: 20px;
 }
 
@@ -72,6 +94,12 @@ label{
     padding: 10px;
     width: 100%;
     text-align: center;
+    background: rgb(254, 217, 224) ;
+    box-shadow: 10px 10px 5px #333;
+}
+.service h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 5px;
 }
 
 .services .service input {
@@ -83,11 +111,217 @@ label{
 button {
     background: #4CAF50;
     color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     border: none;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 15px;
     padding: 8px;
     cursor: pointer;
 }
 
 button:hover {
     background: #45a049;
+}
+
+
+.options{
+    text-align: left;
+}
+.check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.check {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+}
+.checkmark {
+  --clr: #0B6E4F;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1.2em;
+  width: 1.2em;
+  background-color: #605e5e;
+  border-radius: 50%;
+  transition: 300ms;
+}
+.check input:checked ~ .checkmark {
+  background-color: var(--clr);
+  border-radius: .5rem;
+  animation: pulse 500ms ease-in-out;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.check input:checked ~ .checkmark:after {
+  display: block;
+}
+.check .checkmark:after {
+  left: 0.38em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #E0E0E2;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #0B6E4F90;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #0B6E4F60;
+  }
+  100% {
+    box-shadow: 0 0 0 13px #0B6E4F30;
+    rotate: 0;
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width:842px) {
+    .check{
+        font-size: 1em;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .services{
+        flex-wrap: wrap;
+        
+    }
+    .service{
+        flex: 1 1 45%;
+    }
+    
+    .s3{
+        flex: 1 1 100%;
+    }
+}
+
+@media  screen and (max-width:613px) {
+    .services{
+        flex-direction: column;
+    }
+}
+@media  screen and (max-width:400px) {
+     .budget-container{
+        padding: 1em;
+     }
+     .service{
+        padding: 5px;
+     }
+     .book-container{
+        padding: 5px;
+     }
+     .budget-form{
+        padding: 1rem;
+     }
+}
+@media  screen and (max-width:300px){
+     .service h2{
+        font-size: medium;
+        font-weight: 900;
+     }
+     .check{
+        font-size: 1rem;
+     }
+}
+@media screen and (max-width:275px) {
+    .check{
+       font-size: 0.9rem;
+    }
+}
+@media screen and (max-width:253px) {
+    .check{
+       font-size: 0.7rem;
+       font-weight: 800;
+    }
+    .service{
+        padding: 0;
+    }
+}
+.food-section{
+    margin-top: 40px;
+    text-align: center;
+}
+.food-section h2{
+    font-size: 2em;
+    background: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    border-radius: 18px;
+}
+
+.foodMenu{
+
+     text-align: left;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+}
+.foodMenu h3{
+    font-size: 2em;
+    padding: 0.2em;
+}
+
+.foods{
+    width: 100%;
+     padding: 0.2em 3em;
+     border: 3px solid black;
+     background: rgb(254, 217, 224) ;
+     border-radius: 8px;
+    box-shadow: 10px 10px 5px #333;
+    
+}
+
+
+.custom-link{
+color:#6c5ce7;
+font-weight:600;
+text-decoration:none;
+font-size: 1.5em;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.custom-link:hover{
+text-decoration:underline;
+}
+
+.addCart{
+    margin-top: 1.3em;
+    font-size: 1.4em;
+}
+
+.finalList{
+    margin-top: 20px;
+}
+.finalList h2{
+    margin-bottom: 2rem;
+    
+}
+.bookNow{
+    font-size: 1.4rem;
+    margin-top: 0.9em;
 }
