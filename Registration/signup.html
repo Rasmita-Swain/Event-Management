@@ -16,14 +16,14 @@
     <div class="login-container">
         <!--login form-->
        <div class="form-box login">
-          <form action="#">
+          <form action="../php/login.php" method="POST">
              <h1>Login</h1>
              <div class="login-input-box">
-               <input type="text" placeholder="Username" >
-                <i class="fa-solid fa-user"></i>
+               <input type="email" name="email" placeholder="Email" >
+                <i class="fa-solid fa-envelope"></i>
              </div>
              <div class="login-input-box">
-               <input type="password" placeholder="Password" >
+               <input type="password" name="password" placeholder="Password">
                 <i class="fa-solid fa-lock"></i>
              </div>
              <button type="submit" class="butn">Login</button>
@@ -33,23 +33,23 @@
 
        <!--register form-->
        <div class="form-box register">
-         <form action="#">
+         <form action="../php/signup.php" method="POST">
              <h1>Registration</h1>
              <div class="login-input-box">
-               <input type="text" placeholder="Username" >
+               <input type="text" placeholder="Username" name="username">
                 <i class="fa-solid fa-user"></i>
              </div>
              <div class="login-input-box">
-               <input type="email" placeholder="email" >
+               <input type="email" placeholder="email" name="email">
                 <i class="fa-solid fa-envelope"></i>
              </div>
              <div class="login-input-box">
-               <input type="password" placeholder="Password" >
+               <input type="password" placeholder="Password" name="password">
                 <i class="fa-solid fa-lock"></i>
              </div>
              <div class="login-input-box">
                <select name="role" >
-                  <option value="">---Select Role--</option>
+                  <option value=" ">---Select Role--</option>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
                </select>

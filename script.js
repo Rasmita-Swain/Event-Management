@@ -348,12 +348,12 @@ const stars = document.querySelectorAll(".stars span");
 
 let selectedStars = 0;
 
-// 🔓 Open Modal
+//  Open Modal
 openBtn.addEventListener("click", () => {
   modal.classList.add("active");
 });
 
-// ❌ Close Modal
+//  Close Modal
 closeBtn.addEventListener("click", () => {
   modal.classList.remove("active");
 });
@@ -370,7 +370,7 @@ stars.forEach(star => {
   });
 });
 
-// 📦 Load Reviews from localStorage
+//  Load Reviews from localStorage
 function loadReviews() {
   let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
@@ -437,25 +437,11 @@ form.addEventListener("submit", (e) => {
   loadReviews(); // refresh carousel
 });
 
-// 🚀 Initial Load
+
 loadReviews();
 
 
-//contact popup form
 
-/*const cform = document.querySelector(".contactForm");
-const popup = document.getElementById("popup");
-const closeBttn = document.getElementById("closeModal");
-
-cform.addEventListener("submit", function(e) {
-  e.preventDefault(); 
-  popup.classList.add("open");
-});
-
-closeBttn.addEventListener("click", () => {
-  console.log("ok");
-  popup.classList.remove("open");
-});*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
