@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,9 +111,19 @@
       </h2>
       <p class="subline">
         Making every event smoother, and more memorable.
-      </p>
+      </p><br><br>
       <div class="signlogin">
-       <button class="sign-up"><a href="./Registration/signup.html" class="signpage">Sign In!</a></button>
+       <!--<button class="sign-up"><a href="./Registration/signup.html" class="signpage">Sign In!</a></button>-->
+       <?php if (!isset($_SESSION['user_email'])): ?>
+         <a href="./registration/signup.html" class="sign-up signpage">
+             Sign In!
+         </a>
+       <?php else: ?>
+         <a href="/Eventa/php/logout.php" class="sign-up signpage">
+          Logout!
+         </a>
+
+       <?php endif; ?>
       </div>
     </div>
   </div>

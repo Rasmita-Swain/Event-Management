@@ -13,15 +13,14 @@ if ($result->num_rows > 0) {
 
     if (password_verify($password, $user['password'])) {
 
-        $_SESSION['email'] = $user['email'];
+        $_SESSION['user_email'] = $user['email'];   // IMPORTANT FIX
         $_SESSION['role'] = $user['role'];
-
         // 🔥 Role-based redirect
        if ($user['role'] == 'admin') {
     header("Location: /Eventa/demo admin page/adminBoard.html");
     exit();
 } else {
-    header("Location: /Eventa/index.html");
+    header("Location: /Eventa/index.php");
     exit();
 }
 
