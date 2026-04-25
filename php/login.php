@@ -16,12 +16,12 @@ if ($result->num_rows > 0) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
 
-        // 🔥 Role-based redirect
+        //  Role-based redirect
        if ($user['role'] == 'admin') {
-    header("Location: /Eventa/demo admin page/adminBoard.html");
+    header("Location: ../demo_admin_page/adminBoard.html");
     exit();
 } else {
-    header("Location: /Eventa/index.html");
+    header("Location: ../index.html");
     exit();
 }
 

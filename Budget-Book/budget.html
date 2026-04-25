@@ -16,7 +16,7 @@
 
 <body>
 
-    
+
     <section class="budget-container">
         <div class="book-container">
 
@@ -27,9 +27,9 @@
 
             <div class="budget-form">
                 <!-- Event Selection -->
-                <form action="" class="book-box" onsubmit="return false">
+                <form action="../php/save_event.php" class="book-box" method="POST">
                     <label for="eventType">Select Event Type :-</label>
-                    <select id="eventType">
+                    <select id="eventType" name="event_type">
                         <option value="">-- Select Event --</option>
                         <option value="wedding">Wedding</option>
                         <option value="birthday">Birthday</option>
@@ -41,19 +41,20 @@
 
                     <!-- Dynamic Name Input -->
                     <div id="nameSection" style="display:none; margin-top: 3px;">
-                        <label for="nameLabel" id="nameLabel" ></label>
-                        <input type="text" id="eventName" placeholder="">
+                        <label for="nameLabel" id="nameLabel"></label>
+                        <input type="text" name="event_name" id="eventName" placeholder="">
                     </div>
                     <div class="number-input">
                         <label for="Number" class="nameNum">Enter Your Number :-</label>
-                      <div class="numberBox">
-                        <span>+91</span>
-                        <input type="tel" id="Number"  pattern="[0-9]{10}" maxlength="10" placeholder="Enter Your Number">
-                      </div>
+                        <div class="numberBox">
+                            <span>+91</span>
+                            <input type="tel" name="phone" id="Number" pattern="[0-9]{10}" maxlength="10"
+                                placeholder="Enter Your Number">
+                        </div>
                     </div>
                     <div class="guest-input">
                         <label for="guests" class="nameGuest">Enter Number of Guests :-</label>
-                        <input type="number" id="guests" placeholder="Number of guests">
+                        <input type="number" name="guests" id="guests" placeholder="Number of guests">
                     </div>
 
                     <div class="services">
@@ -70,11 +71,12 @@
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Live Band- ₹7000<input type="checkbox" name="option" value="7000" class="check-input">
+                                    Live Band- ₹7000<input type="checkbox" name="option" value="7000"
+                                        class="check-input">
                                     <div class="checkmark"></div>
                                 </label>
                                 <br>
-                                <button class="addBtn" onclick="addToCart()">Add</button>
+                                <button type="button" class="addBtn" onclick="addToCart()">Add</button>
                             </div>
                         </div>
 
@@ -96,7 +98,7 @@
                                     <div class="checkmark"></div>
                                 </label>
                                 <br>
-                                <button class="addBtn" onclick="addToCart()">Add</button>
+                                <button type="button" class="addBtn" onclick="addToCart()">Add</button>
                             </div>
                         </div>
 
@@ -138,27 +140,27 @@
                                 <h3>Starters :</h3><br>
 
                                 <label class="check">
-                                    Veg Spring Rolls (₹150) <input type="checkbox" value="150" name="option">
+                                    Veg Spring Rolls (₹150) <input type="checkbox" value="Veg Spring Rolls|150" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Paneer Tikka (₹200)<input type="checkbox" value="200" name="option">
+                                   Paneer Tikka (₹200) <input type="checkbox" value="Paneer Tikka|200" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Chicken Lollipop (₹180)<input type="checkbox" value="180" name="option">
+                                   Chicken Lollipop (₹180) <input type="checkbox" value="Chicken Lollipop|180" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Baby Corn Chilli (₹170)<input type="checkbox" value="170" name="option">
+                                <label class="check">
+                                  Baby Corn Chilli (₹170) <input type="checkbox" value="Baby Corn Chilli|170" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Chicken 65 (₹190)<input type="checkbox" value="190" name="option">
+                                <label class="check">
+                                 Chicken 65 (₹190) <input type="checkbox" value="Chicken 65|190" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Veg Manchurian (₹160)<input type="checkbox" value="160" name="option">
+                                <label class="check">
+                                    Veg Manchurian (₹160) <input type="checkbox" value="Veg Manchurian|160" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                             </div>
@@ -167,31 +169,31 @@
                                 <h3>Main Course :</h3><br>
 
                                 <label class="check">
-                                    Butter Chicken (₹250) <input type="checkbox" value="150" name="option">
+                                   Butter Chicken (₹250) <input type="checkbox" value="Butter Chicken|250" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Paneer Butter Masala (₹200)<input type="checkbox" value="200" name="option">
+                                 Paneer Butter Masala (₹200) <input type="checkbox" value="Paneer Butter Masala|200" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Veg Biriyani (₹150)<input type="checkbox" value="200" name="option">
+                                 Veg Biriyani (₹150) <input type="checkbox" value="Veg Biriyani|150" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Chicken Biriyani (₹220)<input type="checkbox" value="220" name="option">
+                                <label class="check">
+                                  Chicken Biriyani (₹220) <input type="checkbox" value="Chicken Biriyani|220" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Mutton Curry (₹280)<input type="checkbox" value="280" name="option">
+                                <label class="check">
+                                    Mutton Curry(₹280) <input type="checkbox" value="Mutton Curry|280" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Butter Naan (₹40)<input type="checkbox" value="40" name="option">
+                                <label class="check">
+                                  Butter Naan (₹40) <input type="checkbox" value="Butter Naan|40" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Tandoori Roti (₹25)<input type="checkbox" value="25" name="option">
+                                <label class="check">
+                                  Tandoori Roti (₹25) <input type="checkbox" value="Tandoori Roti|25" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                             </div>
@@ -201,19 +203,19 @@
                                 <h3>Desserts :</h3><br>
 
                                 <label class="check">
-                                    Gulab Jamun (₹30) <input type="checkbox" value="30" name="option">
+                                    Gulab Jamun (₹30) <input type="checkbox" value=" Gulab Jamun|30" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Ice-Cream (₹60)<input type="checkbox" value="60" name="option">
+                                   Ice-Cream (₹60) <input type="checkbox" value="Ice-Cream|60" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                                 <label class="check">
-                                    Kheer (₹85)<input type="checkbox" value="85" name="option">
+                                  kheer (₹85) <input type="checkbox" value="Kheer|85" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
-                                 <label class="check">
-                                    Jalebi (₹25)<input type="checkbox" value="25" name="option">
+                                <label class="check">
+                                   Jalebi (₹25) <input type="checkbox" value="Jalebi|25" name="foods[]">
                                     <div class="checkmark"></div>
                                 </label><br>
                             </div>
@@ -222,18 +224,24 @@
                             <button type="button" onclick="addFood()" class="addCart">Add Food to Cart</button>
                         </div>
                     </div>
-                  <div class="finalList">
-                    <h2>Your Cart :</h2>
+                    <div class="finalList">
+                        <h2>Your Cart :</h2>
 
-                    <ul id="cartItems"></ul>
+                        <ul id="cartItems"></ul>
 
-                    <h1>Total Budget: ₹<span id="total">0</span></h1>
-                  </div>
+                        <h1>Total Budget: ₹<span id="total">0</span></h1>
+                    </div>
 
-                  <div class="book-now">
+                    <div class="book-now">
 
-                    <button class="bookNow">FINALIZE ORDER</button>
-                  </div>
+                        <!-- Hidden inputs -->
+                        <input type="hidden" name="entertainment" id="entertainment">
+                        <input type="hidden" name="decoration" id="decoration">
+                        <input type="hidden" name="media" id="media">
+                        <input type="hidden" name="total" id="totalAmount">
+
+                        <button type="submit" class="bookNow">FINALIZE ORDER</button>
+                    </div>
 
                 </form>
             </div>

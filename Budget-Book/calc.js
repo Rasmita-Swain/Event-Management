@@ -52,7 +52,10 @@ let guests = parseInt(document.getElementById("guests").value) || 0;
 let foodTotal = 0;
 
 foodItems.forEach(item => {
-foodTotal += parseInt(item.value);
+let parts = item.value.split("|");
+let price = parseInt(parts[1]);
+
+foodTotal += price;
 });
 
 foodTotal = foodTotal * guests;
@@ -67,6 +70,7 @@ cart.appendChild(li);
 total += foodTotal;
 
 document.getElementById("total").innerText = total;
+document.getElementById("totalAmount").value=total;
 
 }
 
@@ -117,7 +121,16 @@ li.innerHTML = `
 
 
 cart.appendChild(li);
- total += packageTotal;
+ //total += packageTotal;
+ total = total + (entertainment + decoration + media);
+
+document.getElementById("total").innerText = total;
+
+// STORE VALUES FOR PHP
+document.getElementById("entertainment").value = entertainment;
+document.getElementById("decoration").value = decoration;
+document.getElementById("media").value = media;
+document.getElementById("totalAmount").value = total;
 
 document.getElementById("total").innerText = total;
 
