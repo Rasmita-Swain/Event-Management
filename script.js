@@ -2,12 +2,10 @@ import { setupMarqueeAnimation } from "./marquee.js";
 
 document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(SplitText)
-   
-  let spilt = SplitText.create(".focus-in" ,{
+  window.addEventListener("load", () => {
+    document.fonts.ready.then(() => { 
+      let spilt = SplitText.create(".focus-in" ,{ type :"lines,words,chars" });
 
-    type :"lines,words,chars"
-
-  });
   gsap.from(spilt.chars,{
 
     y:40,
@@ -18,6 +16,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         each:0.1,
         from:"random"
     }
+  });
+});
   });
  });
 
@@ -372,6 +372,35 @@ stars.forEach(star => {
 
 //  Load Reviews from localStorage
 function loadReviews() {
+  fetch("php/getReviews.php")
+    .then(res => res.json())
+    .then(reviews => {
+
+      let duplicated = [...reviews, ...reviews];
+
+      track.innerHTML = duplicated.map(r => `
+        <div class="review-card">
+
+          <div class="review-avatar" style="background:${getColor(r.name)}">
+            ${r.name.charAt(0).toUpperCase()}
+          </div>
+
+          <h3>${r.name}</h3>
+
+          <div class="stars">
+            ${"⭐".repeat(r.stars)}
+          </div>
+
+          <p class="review-text">
+            ${r.message}
+          </p>
+
+        </div>
+      `).join("");
+    });
+}
+
+/*function loadReviews() {
   let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
   let firstTen = reviews.slice(-10).reverse();
@@ -401,7 +430,7 @@ function loadReviews() {
 
 
 `).join("");
-}
+}*/
 function getColor(name) {
   const colors = ["#c9a227", "#8a7d6b", "#c14356", "#6b8e23", "#4682b4"];
   let index = name.charCodeAt(0) % colors.length;
@@ -410,6 +439,42 @@ function getColor(name) {
 
 // 📤 Submit Review
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
+
+  if (selectedStars === 0) {
+    alert("Please select rating");
+    return;
+  }
+
+  let formData = new FormData();
+  formData.append("name", name);
+  formData.append("stars", selectedStars);
+  formData.append("message", message);
+
+  fetch("php/review.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
+    if (data === "success") {
+      alert("Review submitted successfully!");
+      form.reset();
+      selectedStars = 0;
+      stars.forEach(s => s.classList.remove("active"));
+
+      loadReviews();
+    } else {
+      alert("Error submitting review");
+    }
+  });
+});
+
+
+/*form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let name = document.getElementById("name").value;
@@ -435,7 +500,7 @@ form.addEventListener("submit", (e) => {
   stars.forEach(s => s.classList.remove("active"));
 
   loadReviews(); // refresh carousel
-});
+});*/
 
 
 loadReviews();
@@ -443,7 +508,62 @@ loadReviews();
 
 
 
+const cform = document.querySelector(".contactForm");
+
+cform.addEventListener("submit", async function (e) {
+    e.preventDefault(); // stop default redirect
+
+    const formData = new FormData(cform);
+
+    const response = await fetch(cform.action, {
+        method: "POST",
+        body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+        cform.reset();
+    } else {
+        alert("Something went wrong!");
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  const cform = document.querySelector(".contactForm");
+  const popup = document.getElementById("popup");
+  const closeBttn = document.getElementById("closeModdal");
+
+  cform.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(cform);
+
+    const response = await fetch(cform.action, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      popup.classList.add("open"); // ✅ show popup only if success
+    } else {
+      alert("Something went wrong!");
+    }
+  });
+
+  closeBttn.addEventListener("click", function () {
+    popup.classList.remove("open");
+    cform.reset(); // ✅ clear fields
+  });
+
+});
+
+
+/*document.addEventListener("DOMContentLoaded", function () {
 
   const cform = document.querySelector(".contactForm");
   const popup = document.getElementById("popup");
@@ -462,4 +582,4 @@ document.addEventListener("DOMContentLoaded", function () {
     cform.reset();
   });
 
-});
+});*/

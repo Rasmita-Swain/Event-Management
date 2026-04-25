@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,9 +111,19 @@
       </h2>
       <p class="subline">
         Making every event smoother, and more memorable.
-      </p>
+      </p><br><br>
       <div class="signlogin">
-       <button class="sign-up"><a href="./Registration/signup.html" class="signpage">Sign In!</a></button>
+       <!--<button class="sign-up"><a href="./Registration/signup.html" class="signpage">Sign In!</a></button>-->
+       <?php if (!isset($_SESSION['user_email'])): ?>
+         <a href="./registration/signup.html" class="sign-up signpage">
+             Sign In!
+         </a>
+       <?php else: ?>
+         <a href="/Eventa/php/logout.php" class="sign-up signpage">
+          Logout!
+         </a>
+
+       <?php endif; ?>
       </div>
     </div>
   </div>
@@ -372,11 +385,13 @@
        <h2>Contact Us &#128172</h2>
 
        <!--contact form-->
-        <form action="" class="contactForm">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contactForm">
           <div class="inputGroup iG">
-            <input required="" type="text" name="text" autocomplete="off" class="contacti" placeholder="Your Name">
-            <input required="" type="email" name="text" autocomplete="off" class="contacti" placeholder="Your Email">
-             <textarea  id="contactMessage" placeholder="Write your Message ..." rows="5"></textarea>
+             <input type="hidden" name="access_key" value="6befb9e2-0050-47f4-aef0-0f6d7b62be6d">
+
+            <input required="" type="name" name="text" autocomplete="off" class="contacti" placeholder="Your Name">
+            <input required="" type="email" name="email" autocomplete="off" class="contacti" placeholder="Your Email">
+             <textarea  id="contactMessage" name="message" placeholder="Write your Message ..." rows="5"></textarea>
           </div>
           <div class="input-Group">
             <button type="submit" class="contact-submit" >Submit</button>
@@ -388,7 +403,7 @@
                <div class="tick">&#9989</div>
                <h3>Thank You!</h3>
                <p>Your details has been successfully submitted . Thanks!</p>
-               <button type="submit" id="closeModdal">OK</button>
+               <button type="button" id="closeModdal">OK</button>
 
             </div>
 

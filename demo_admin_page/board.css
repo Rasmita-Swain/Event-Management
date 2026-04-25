@@ -41,12 +41,18 @@ body{
   position: absolute;
   right: 55px;
   top: 20px;
+  top: 30px;
   background: #397ec4;
   color: #fff;
   padding: 5px;
   border-radius: 8px;
   border: 2px solid #333;
   font-weight: 600;
+}
+.dropdown a{
+  text-decoration: none;
+  padding: 10px;
+  color: #fff;
 }
 
 .adminInfo:hover .dropdown {

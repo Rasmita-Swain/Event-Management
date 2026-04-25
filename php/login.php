@@ -13,7 +13,7 @@ if ($result->num_rows > 0) {
 
     if (password_verify($password, $user['password'])) {
 
-        $_SESSION['email'] = $user['email'];
+       /* $_SESSION['user_email'] = $user['email'];   // IMPORTANT FIX
         $_SESSION['role'] = $user['role'];
 
         //  Role-based redirect
@@ -23,7 +23,24 @@ if ($result->num_rows > 0) {
 } else {
     header("Location: ../index.html");
     exit();
-}
+}*/
+ $_SESSION['user_email'] = $user['email'];
+
+        //  ADMIN CHECK (WRITE HERE)
+        $admin_email = "eventaa@gmail.com"; // 👈 your admin email
+
+        if ($user['email'] === $admin_email) {
+            $_SESSION['role'] = 'admin';
+
+            header("Location: /Eventa/demo admin page/adminBoard.php");
+            exit();
+
+        } else {
+            $_SESSION['role'] = 'user';
+            
+            header("Location: /Eventa/index.php");
+            exit();
+        }
 
     } else {
         echo "Wrong password!";

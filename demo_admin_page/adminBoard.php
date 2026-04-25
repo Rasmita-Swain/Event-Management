@@ -1,0 +1,127 @@
+<?php
+session_start();
+
+$admin_email = "eventaa@gmail.com";
+
+if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== $admin_email) {
+    header("Location: /Eventa/index.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="board.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Audiowide&family=Bitcount+Prop+Double:wght@100..900&family=Cinzel+Decorative:wght@400;700;900&family=Eagle+Lake&family=Lugrasimo&family=Macondo+Swash+Caps&family=Ribeye&family=Sekuya&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <section class="admin-page" id="adminPge">
+    <div class="admin-heading">
+      <h2>EVENTA</h2>
+      <div class="adminInfo">
+        <i class="fa-solid fa-user" style="color: rgb(248, 246, 244);"></i>
+        <div class="dropdown" id="dropdown">
+         <a href="/Eventa/php/logout.php">
+           Logout
+        </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <div class="admin-cards">
+        <div class="acard">
+          <i class="fa-solid fa-calendar-days" style="color: rgb(73, 143, 197);"></i>
+          <h3>Total Bookings</h3>
+          <p id="totalBookings">0</p>
+        </div>
+
+        <div class="acard">
+          <i class="fa-solid fa-indian-rupee-sign" style="color: rgb(88, 207, 69);"></i>
+          <h3>Total Revenue</h3>
+          <p id="totalRevenue">₹0</p>
+        </div>
+
+        <div class="acard">
+          <i class="fa-solid fa-calendar-day" style="color: rgb(115, 51, 147);"></i>
+          <h3>Upcoming Events</h3>
+          <p id="upcomingEvents">0</p>
+        </div>
+
+        <div class="acard">
+          <i class="fa-solid fa-users" style="color: rgb(141, 54, 101);"></i>
+          <h3>Total Users</h3>
+          <p id="totalUsers">0</p>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="charts">
+        <div class="chart-box">
+          <h3>Bookings Trend</h3>
+          <canvas id="lineChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+          <h3>Revenue Analytics</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+      <div class="admin-bottom">
+        <div class="piechart">
+          <canvas id="eventPie"></canvas>
+        </div>
+
+        <!-- table -->
+        <div class="table-section">
+          <h3>Top Services Usage</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+        <!-- modal -->
+        <div id="admin-modal" class="admin-modal">
+          <div class="amodal-content">
+            <span onclick="admincloseModal()">X</span>
+            <h3>Selected Services:</h3>
+            <p id="serviceDetails"></p>
+
+            <button id="Approve" onclick="approveEvent()">Approve</button>
+            <button id="Cancel" onclick="cancelEvent()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+
+
+  </section>
+
+
+
+
+  <script src="admin.js"></script>
+</body>
+
+</html>
