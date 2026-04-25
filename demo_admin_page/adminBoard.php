@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+$admin_email = "eventaa@gmail.com";
+
+if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== $admin_email) {
+    header("Location: /Eventa/index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

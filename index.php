@@ -385,11 +385,13 @@ session_start();
        <h2>Contact Us &#128172</h2>
 
        <!--contact form-->
-        <form action="" class="contactForm">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contactForm">
           <div class="inputGroup iG">
-            <input required="" type="text" name="text" autocomplete="off" class="contacti" placeholder="Your Name">
-            <input required="" type="email" name="text" autocomplete="off" class="contacti" placeholder="Your Email">
-             <textarea  id="contactMessage" placeholder="Write your Message ..." rows="5"></textarea>
+             <input type="hidden" name="access_key" value="6befb9e2-0050-47f4-aef0-0f6d7b62be6d">
+
+            <input required="" type="name" name="text" autocomplete="off" class="contacti" placeholder="Your Name">
+            <input required="" type="email" name="email" autocomplete="off" class="contacti" placeholder="Your Email">
+             <textarea  id="contactMessage" name="message" placeholder="Write your Message ..." rows="5"></textarea>
           </div>
           <div class="input-Group">
             <button type="submit" class="contact-submit" >Submit</button>
@@ -401,7 +403,7 @@ session_start();
                <div class="tick">&#9989</div>
                <h3>Thank You!</h3>
                <p>Your details has been successfully submitted . Thanks!</p>
-               <button type="submit" id="closeModdal">OK</button>
+               <button type="button" id="closeModdal">OK</button>
 
             </div>
 
