@@ -344,7 +344,7 @@ session_start();
    <!--review form-->
     <form  action="" id="reviewForm">
      <div class="input-grp">
-      <input type="text" name="text" autocomplete="off" id="name" placeholder="Your Name">
+      <input type="text" name="text" autocomplete="off" id="name" placeholder="Your Name" required>
        
     </div>
       
@@ -359,7 +359,7 @@ session_start();
         <span data-value="5">⭐</span>
       </div><br>
       <div class="input-grp">
-       <textarea id="message" placeholder="Write your review..." rows="5"></textarea>
+       <textarea id="message" placeholder="Write your review..." rows="5" required></textarea>
       </div>
       <div class="input-grp">
        <button type="submit" class="review-submit">Submit</button>
@@ -389,9 +389,9 @@ session_start();
           <div class="inputGroup iG">
              <input type="hidden" name="access_key" value="6befb9e2-0050-47f4-aef0-0f6d7b62be6d">
 
-            <input required="" type="name" name="text" autocomplete="off" class="contacti" placeholder="Your Name">
-            <input required="" type="email" name="email" autocomplete="off" class="contacti" placeholder="Your Email">
-             <textarea  id="contactMessage" name="message" placeholder="Write your Message ..." rows="5"></textarea>
+            <input required="" type="name" name="text" autocomplete="off" class="contacti" placeholder="Your Name" required>
+            <input required="" type="email" name="email" autocomplete="off" class="contacti" placeholder="Your Email" required>
+             <textarea  id="contactMessage" name="message" placeholder="Write your Message ..." rows="5" required></textarea>
           </div>
           <div class="input-Group">
             <button type="submit" class="contact-submit" >Submit</button>

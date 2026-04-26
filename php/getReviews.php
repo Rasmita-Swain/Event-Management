@@ -1,7 +1,7 @@
 <?php
 require_once "../database/db.php";
 
-$sql = "SELECT * FROM reviews ORDER BY created_at DESC LIMIT 10";
+$sql = "SELECT * FROM reviews ORDER BY created_at DESC LIMIT 20";
 $result = $conn->query($sql);
 
 $reviews = [];

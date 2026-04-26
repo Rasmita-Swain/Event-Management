@@ -32,7 +32,7 @@ function loadDashboard() {
 fetch("../php/get_dashboard.php")
 .then(res => res.json())
 .then(data => {
-
+    console.log(data);
     bookings = data;
 
     // Total Bookings
@@ -46,7 +46,12 @@ fetch("../php/get_dashboard.php")
     document.getElementById("totalRevenue").innerText = "₹" + total;
 
     // Upcoming (same for now)
-    document.getElementById("upcomingEvents").innerText = bookings.length;
+    let today = new Date().toISOString().split("T")[0];
+
+    let upcoming = bookings.filter(b => b.date >= today);
+
+    document.getElementById("upcomingEvents").innerText = upcoming.length;
+   // document.getElementById("upcomingEvents").innerText = bookings.length;
 
     // Users (simple)
     document.getElementById("totalUsers").innerText = bookings.length;
@@ -81,7 +86,7 @@ function loadTable() {
         <td>${b.event}</td>
         <td>${b.date}</td>
         <td>${b.guests}</td>
-        <td style="color:${b.status === 'Confirmed' ? 'green' : b.status === 'Cancelled' ? 'red' : 'orange'}">
+        <td style="color:${b.status === 'confirmed' ? 'green' : b.status === 'cancelled' ? 'red' : 'orange'}">
   ${b.status}
 </td>
         <td>
@@ -125,12 +130,13 @@ function admincloseModal() {
 }*/
 function approveEvent() {
 
-fetch("/eventa/event-management/php/update_status.php", {
+fetch("/Eventa/php/update_status.php", {
     method: "POST",
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: `id=${bookings[selectedIndex].id}&status=Confirmed`
+    body: `id=${bookings[selectedIndex].id}&status=confirmed`
+     //body: `id=${id}&status=${status}`
 })
 .then(() => {
     admincloseModal();
@@ -141,12 +147,12 @@ fetch("/eventa/event-management/php/update_status.php", {
 // cancel
 function cancelEvent() {
 
-fetch("/eventa/event-management/php/update_status.php", {
+fetch("/Eventa/php/update_status.php", {
     method: "POST",
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: `id=${bookings[selectedIndex].id}&status=Cancelled`
+    body: `id=${bookings[selectedIndex].id}&status=cancelled`
 })
 .then(() => {
     admincloseModal();
@@ -161,13 +167,37 @@ fetch("/eventa/event-management/php/update_status.php", {
 
 function loadCharts() {
 
-let labels = [];
+/*let labels = [];
 let data = [];
 
 bookings.forEach(b => {
     labels.push(b.event);
     data.push(b.total);
+});*/
+let eventMap = {};
+
+bookings.forEach(b => {
+
+    if (!b.event || !b.total) return; // 👈 skip bad data
+
+    let eventName = b.event.toString().trim().toLowerCase();
+
+    if (!eventMap[eventName]) {
+        eventMap[eventName] = 0;
+    }
+
+    let value = parseFloat(b.total);
+
+    if (!isNaN(value)) {
+        eventMap[eventName] += value;
+    }
 });
+
+let labels = Object.keys(eventMap).map(e =>
+    e.charAt(0).toUpperCase() + e.slice(1)
+);
+
+let data = Object.values(eventMap);
 
 // BAR CHART
 new Chart(document.getElementById("barChart"), {
@@ -204,6 +234,10 @@ new Chart(document.getElementById("lineChart"), {
     }
 });
 }
+
+loadDashboard();
+
+
 /*function loadCharts() {
 // Line Chart
 new Chart(document.getElementById("lineChart"), {
@@ -242,4 +276,3 @@ new Chart(document.getElementById("eventPie"), {
   });
 
 }*/
-loadDashboard();

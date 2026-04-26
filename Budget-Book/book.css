@@ -85,6 +85,9 @@ label{
 .number-input{
     margin-top: 20px;
 }
+.eventdate-input{
+    margin-top: 20px;
+}
 .numberBox{
     display: flex;
     gap: 8px;

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once "../database/db.php";
 
 $sql = "SELECT * FROM events ORDER BY id DESC";
@@ -35,11 +36,12 @@ while ($row = $result->fetch_assoc()) {
     //  ADD TO BOOKINGS
     $bookings[] = [
         "id" => $row['id'],
-        "event" => $row['event_name'],
-        "user" => $row['user_email'],
-        "date" => isset($row['created_at']) ? date("Y-m-d", strtotime($row['created_at'])) : "N/A",
+        "event" => $row['event_type'],
+        "user" => $row['event_name'],
+        "date" => $row['event_date'],
+       // "date" => isset($row['created_at']) ? date("Y-m-d", strtotime($row['created_at'])) : "N/A",
         "guests" => $row['guests'],
-        "status" => $row['status'],
+       "status" => isset($row['status']) ? $row['status'] : 'pending',
         "services" => $services, 
         "total" => $row['total']
     ];

@@ -2,8 +2,9 @@
 session_start();
 require_once "../database/db.php";
 
-$email = $_SESSION['email'] ?? "test@gmail.com";
+$email = $_SESSION['user_email'] ?? "test@gmail.com";
 
+$event_type = $_POST['event_type'];
 $event_name = $_POST['event_name'];
 $phone = $_POST['phone'];
 $guests = $_POST['guests'];
@@ -11,11 +12,12 @@ $ent = $_POST['entertainment'];
 $dec = $_POST['decoration'];
 $media = $_POST['media'];
 $total = $_POST['total'];
+$event_date = $_POST['event_date'];
 
 // Insert event
-$stmt = $conn->prepare("INSERT INTO events (user_email, event_name, phone, guests, entertainment, decoration, media, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO events (user_email, event_type, event_name, phone, guests, entertainment, decoration, media, total, event_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssidddd", $email, $event_name, $phone, $guests, $ent, $dec, $media, $total);
+$stmt->bind_param("ssssidddds", $email, $event_type, $event_name, $phone, $guests, $ent, $dec, $media, $total, $event_date);
 
 if ($stmt->execute()) {
 
@@ -36,7 +38,16 @@ if ($stmt->execute()) {
 
 }
 
-    echo "✅ Event + Catering saved successfully!";
+
+   echo "
+<script>
+window.location.href='generate_bill.php?event_id=$event_id';
+setTimeout(function(){
+    window.location.href='../index.php';
+}, 2000);
+</script>
+";
+exit();
 
 } else {
     echo "❌ Error: " . $stmt->error;

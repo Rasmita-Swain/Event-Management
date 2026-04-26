@@ -13,26 +13,15 @@ if ($result->num_rows > 0) {
 
     if (password_verify($password, $user['password'])) {
 
-       /* $_SESSION['user_email'] = $user['email'];   // IMPORTANT FIX
-        $_SESSION['role'] = $user['role'];
-
-        //  Role-based redirect
-       if ($user['role'] == 'admin') {
-    header("Location: ../demo_admin_page/adminBoard.html");
-    exit();
-} else {
-    header("Location: ../index.html");
-    exit();
-}*/
  $_SESSION['user_email'] = $user['email'];
 
         //  ADMIN CHECK (WRITE HERE)
-        $admin_email = "eventaa@gmail.com"; // 👈 your admin email
+        $admin_email = "eventaa@gmail.com"; //  your admin email
 
         if ($user['email'] === $admin_email) {
             $_SESSION['role'] = 'admin';
 
-            header("Location: /Eventa/demo admin page/adminBoard.php");
+            header("Location: /Eventa/demo_admin_page/adminBoard.php");
             exit();
 
         } else {
