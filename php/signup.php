@@ -12,7 +12,8 @@ $sql = "INSERT INTO users (username, email, password, role)
         VALUES ('$username', '$email', '$hashedPassword', '$role')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: ../Registration/signup.html");
+    header("Location: ../Registration/signup.html?success=1");
+    exit();
 } else {
     echo "Error: " . $conn->error;
 }

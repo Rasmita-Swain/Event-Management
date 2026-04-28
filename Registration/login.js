@@ -12,3 +12,9 @@ loginBtn.addEventListener('click', () => {
 /*function goBack() {
   window.location.href = "../index.html"; // adjust path if needed
 }*/
+
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("success") === "1") {
+    alert("Registered successfully! Please login.");
+}
