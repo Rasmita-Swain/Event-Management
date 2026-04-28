@@ -142,6 +142,7 @@ gsap.ticker.lagSmoothing(0);
  const introCard = cards[0];
 
 const titles = gsap.utils.toArray(".card-title h2");
+document.fonts.ready.then(() => {
 titles.forEach((title) => {
   const spilt1 = new SplitText(title, {
     type: "char",
@@ -151,6 +152,7 @@ titles.forEach((title) => {
   spilt1.chars.forEach((char) =>{
     char.innerHTML = `<span>${char.textContent}</span>` ;
   });
+});
 });
 
 const cardImgWrap = introCard.querySelector(".card-img");

@@ -359,7 +359,7 @@ session_start();
         <span data-value="5">⭐</span>
       </div><br>
       <div class="input-grp">
-       <textarea id="message" placeholder="Write your review..." rows="5" required></textarea>
+       <textarea id="message" placeholder="Write your review..." rows="3" required></textarea>
       </div>
       <div class="input-grp">
        <button type="submit" class="review-submit">Submit</button>
